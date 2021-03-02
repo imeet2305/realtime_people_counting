@@ -171,7 +171,7 @@ def main():
 
         img = imutils.resize(img, width=640)
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        peoples = top_cascade.detectMultiScale(gray, 1.1, 7, cv2.CASCADE_SCALE_IMAGE, (SZ_LIMIT1, SZ_LIMIT1), (SZ_LIMIT2, SZ_LIMIT2))
+        peoples = top_cascade.detectMultiScale(gray, 1.1, 5, cv2.CASCADE_SCALE_IMAGE, (SZ_LIMIT1, SZ_LIMIT1), (SZ_LIMIT2, SZ_LIMIT2))
 
         # draw cross - line
         cv2.line(img, line_point1, line_point2, (255, 0, 255), 2, 1)
