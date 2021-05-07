@@ -8,7 +8,6 @@ import numpy as np
 from datetime import datetime,date
 
 
-######################fireabase###################
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
@@ -18,7 +17,6 @@ firebase_admin.initialize_app(cred)
 
 db = firestore.client()
 
-#######################firebase#########################
 
 ENTERED_STRING = "ENTERED_THE_AREA"
 LEFT_AREA_STRING = "LEFT_THE_AREA"
@@ -82,7 +80,7 @@ class Person:
 
 def get_video():
     ap = argparse.ArgumentParser()
-    #ap.add_argument("-v", "--video", default="video/zenital2.avi", help="path to the video file")
+    ap.add_argument("-v", "--video", default="video/zenital2.avi", help="path to the video file")
     args = vars(ap.parse_args())
 
     # get video from webcam
@@ -135,7 +133,6 @@ def main():
     prev_frame = 0
     today = str(date.today())
 
-    ################################DB push is here##############################################
     def pushDatabase():
         bus_no = '136'
         now = datetime.now()
@@ -146,7 +143,6 @@ def main():
                     u'current': inside_count-outside_count
                 }
         db.collection(u'CAMERA_COUNT').document(today).collection(bus_no).document(current_time).set(data, merge=True)
-###############################################################################################
     ret, img = camera.read()
     if not ret:
         print("Can't read video file!")
